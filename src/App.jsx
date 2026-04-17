@@ -3,14 +3,16 @@
 import { useState } from "react";
 import { generateTheme } from "./utils/generateTheme";
 import { generateCSSVariables } from "./utils/generateCSSVariables";
+import ThemePreview from "./components/themePreview"
+import CSSOutput from "./components/cssOutput"
 
 function App() {
   const [css, setCss] = useState("")
   const [theme, setTheme] = useState(null)
 
   function handleGenerate() {
-    const theme = generateTheme()
-    const cssOutput = generateCSSVariables(theme)
+    const newTheme = generateTheme()
+    const cssOutput = generateCSSVariables(newTheme)
 
     setTheme(newTheme)
     setCss(cssOutput)
@@ -46,4 +48,4 @@ function App() {
 }
 
 
-export default App()
+export default App

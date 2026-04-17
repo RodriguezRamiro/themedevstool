@@ -19,3 +19,5 @@ function CSSOutput({ css }) {
         </div>
     )
 }
+
+export default CSSOutput
