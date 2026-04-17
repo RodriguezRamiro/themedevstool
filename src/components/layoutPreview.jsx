@@ -32,6 +32,10 @@ function LayoutPreview() {
 
                 </div>
 
+                <button className="cta">Primary Action</button>
+<a href="#">Example Link</a>
+<p className="muted">Secondary text example</p>
+
             </section>
 
             <footer className="layout-footer">
