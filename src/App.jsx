@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import { generateTheme } from "./utils/generateTheme";
 import { generateCSSVariables } from "./utils/generateCSSVariables";
-import { applyThemeToDocument } from "./utils/applytheme";
+import { applyThemeToDocument } from "./utils/applyTheme.js";
 import CSSOutput from "./components/cssOutput";
 import LayoutPreview from "./components/layoutPreview";
 
@@ -16,10 +16,16 @@ function App() {
 
     setTheme(newTheme);
     setCss(cssOutput);
-    applyThemeToDocument(newTheme);
+    applyThemeToDocument(newTheme, mode);
   }
 
-  // ✅ Runs once when the app loads
+  const [mode, setMode] = useState("light");
+
+  function toggleTheme() {
+    const newMode = mode === "light" ? "dark" : "light";
+    setMode(newMode);
+    document.documentElement.setAttribute("data-theme", newMode);
+  }
   useEffect(() => {
     handleGenerate();
   }, []);
@@ -40,6 +46,11 @@ function App() {
           <button onClick={() => navigator.clipboard.writeText(css)}>
             Copy CSS
           </button>
+
+          <button onClick={toggleTheme}>
+  Toggle {mode === "light" ? "Dark" : "Light"}
+</button>
+      {theme && <ThemePreview theme={theme} />}
 
         </div>
 
