@@ -1,12 +1,12 @@
 /* //themedevstool/src/App.jsx */
 
-import { useState } from "react";
-import "./App.css";
-import { generateTheme } from "./utils/generateTheme";
-import { generateCSSVariables } from "./utils/generateCSSVariables";
-import ThemePreview from "./components/themePreview"
+import { useState } from "react"
+import "./App.css"
+import { generateTheme } from "./utils/generateTheme"
+import { generateCSSVariables } from "./utils/generateCSSVariables"
+import { applyThemeToDocument } from "./utils/applytheme"
 import CSSOutput from "./components/cssOutput"
-import LayoutPreview from "./components/layoutPreview";
+import LayoutPreview from "./components/layoutPreview"
 
 
 function App() {
