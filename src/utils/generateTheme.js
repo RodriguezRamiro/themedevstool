@@ -1,5 +1,7 @@
 /* //themedevstool/src/utils/generateTheme.js */
 
+import { generatePalette } from "./generatePalette";
+
 export function generateTheme() {
     const palette = generatePalette()
 

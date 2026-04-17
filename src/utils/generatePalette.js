@@ -1,7 +1,7 @@
 /* //themedevstool/src/utils/generatePalette.js */
 
 function randomHue() {
-    return Math.floor(math.random() * 360)
+    return Math.floor(Math.random() * 360)
 }
 
 function hsl(h, s, l) {
