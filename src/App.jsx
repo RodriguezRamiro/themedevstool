@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div>
-      <h1>Thme Dev Tool</h1>
+      <h1>Theme Dev Tool</h1>
 
       <button onClick={handleGenerate}>
         Generate Theme
