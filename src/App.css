@@ -54,7 +54,11 @@
     border: 1px solid var(--color-secondary);
   }
 
-  .footer {
+  .layout-preview {
+    min-height: 100vh;
+  }
+
+  .layout-footer {
     background: var(--color-primary);
 
     color: white;
@@ -68,8 +72,8 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: #0f172a;
-    color: #e2e8f0;
+    background: var(--color-background);
+    color: var(--color-text);
     font-family: system-ui, sans-serif;
   }
 
@@ -78,23 +82,24 @@
     border-bottom: 1px solid #1e293b;
   }
 
-  .main {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    padding: 1rem;
+  .app-header {
+    position: sticky;
+    top: 0;
+
+    background: var(--color-surface);
+
+    border-bottom: 1px solid var(--color-secondary);
+
+    padding: 1rem 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    z-index: 10;
   }
 
-  .panel {
-    background: #020617;
-    border: 1px solid #1e293b;
-    border-radius: 12px;
-    padding: 1rem;
-    overflow: auto;
-  }
-
-  .footer {
+  .app-footer {
     padding: 1rem;
     border-top: 1px solid #1e293b;
     display: flex;
@@ -109,6 +114,11 @@
     color: white;
     cursor: pointer;
     font-weight: 600;
+  }
+
+  .controls {
+    display: flex;
+    gap: 0.75rem;
   }
 
   button:hover {

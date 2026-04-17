@@ -8,9 +8,9 @@ function ThemePreview({ theme }) {
 
             <div className="swatches">
 
-                <div style={{ background: theme.light.primary }}>Primary</div>
-                <div style={{ background: theme.light.secondary }}>Secondary</div>
-                <div style={{ background: theme.light.accent }}>Accent</div>
+                <div className="swatch" style={{ background: theme.light.primary }}>Primary</div>
+                <div className="swatch" style={{ background: theme.light.secondary }}>Secondary</div>
+                <div className="swatch" style={{ background: theme.light.accent }}>Accent</div>
 
             </div>
 

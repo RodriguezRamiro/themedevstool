@@ -34,7 +34,7 @@ function LayoutPreview() {
 
             </section>
 
-            <footer className="footer">
+            <footer className="layout-footer">
             Footer Content
             </footer>
         </div>

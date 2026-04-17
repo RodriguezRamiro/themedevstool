@@ -26,27 +26,25 @@ function App() {
   return (
     <div className="app">
 
-      <header className="header">
+      <header className="app-header">
+
         <h1>Theme Dev Tool</h1>
+
+        <div className="controls">
+
+          <button onClick={handleGenerate}>
+            Generate Theme
+          </button>
+
+          <button onClick={() => navigator.clipboard.writeText(css)}>
+            Copy CSS
+          </button>
+
+        </div>
+
       </header>
 
-      <main className="main">
-
-        <div className="panel preview">
-          {theme && <LayoutPreview />}
-        </div>
-
-        <div className="panel output">
-          <CSSOutput css={css} />
-        </div>
-
-      </main>
-
-      <footer className="footer">
-        <button onClick={handleGenerate}>
-          Generate Theme
-        </button>
-      </footer>
+      <LayoutPreview />
 
     </div>
   )
