@@ -6,6 +6,7 @@ import { generateTheme } from "./utils/generateTheme";
 import { generateCSSVariables } from "./utils/generateCSSVariables";
 import ThemePreview from "./components/themePreview"
 import CSSOutput from "./components/cssOutput"
+import LayoutPreview from "./components/layoutPreview";
 
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
       <main className="main">
 
         <div className="panel preview">
-          {theme && <ThemePreview theme={theme} />}
+          {theme && <LayoutPreview />}
         </div>
 
         <div className="panel output">
