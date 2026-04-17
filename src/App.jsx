@@ -1,10 +1,12 @@
 /* //themedevstool/src/App.jsx */
 
 import { useState } from "react";
+import "./App.css";
 import { generateTheme } from "./utils/generateTheme";
 import { generateCSSVariables } from "./utils/generateCSSVariables";
 import ThemePreview from "./components/themePreview"
 import CSSOutput from "./components/cssOutput"
+
 
 function App() {
   const [css, setCss] = useState("")
@@ -14,8 +16,10 @@ function App() {
     const newTheme = generateTheme()
     const cssOutput = generateCSSVariables(newTheme)
 
+
     setTheme(newTheme)
     setCss(cssOutput)
+    applyThemeToDocument(newTheme)
   }
 
   return (
