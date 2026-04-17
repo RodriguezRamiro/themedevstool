@@ -7,7 +7,7 @@ function CSSOutput({ css }) {
     }
 
     return (
-        <div>
+        <div className="css-output">
 
             <h2>CSS Output</h2>
 

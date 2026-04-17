@@ -1,27 +1,28 @@
-/* //themedevstool/src/App.jsx */
-
-import { useState } from "react"
-import "./App.css"
-import { generateTheme } from "./utils/generateTheme"
-import { generateCSSVariables } from "./utils/generateCSSVariables"
-import { applyThemeToDocument } from "./utils/applytheme"
-import CSSOutput from "./components/cssOutput"
-import LayoutPreview from "./components/layoutPreview"
-
+import { useState, useEffect } from "react";
+import "./App.css";
+import { generateTheme } from "./utils/generateTheme";
+import { generateCSSVariables } from "./utils/generateCSSVariables";
+import { applyThemeToDocument } from "./utils/applytheme";
+import CSSOutput from "./components/cssOutput";
+import LayoutPreview from "./components/layoutPreview";
 
 function App() {
-  const [css, setCss] = useState("")
-  const [theme, setTheme] = useState(null)
+  const [css, setCss] = useState("");
+  const [theme, setTheme] = useState(null);
 
   function handleGenerate() {
-    const newTheme = generateTheme()
-    const cssOutput = generateCSSVariables(newTheme)
+    const newTheme = generateTheme();
+    const cssOutput = generateCSSVariables(newTheme);
 
-
-    setTheme(newTheme)
-    setCss(cssOutput)
-    applyThemeToDocument(newTheme)
+    setTheme(newTheme);
+    setCss(cssOutput);
+    applyThemeToDocument(newTheme);
   }
+
+  // ✅ Runs once when the app loads
+  useEffect(() => {
+    handleGenerate();
+  }, []);
 
   return (
     <div className="app">
@@ -46,9 +47,12 @@ function App() {
 
       <LayoutPreview />
 
+      {css && (
+        <CSSOutput css={css} />
+      )}
+
     </div>
-  )
+  );
 }
 
-
-export default App
+export default App;
