@@ -1,8 +1,8 @@
 /* //themedevstool/src/App.jsx */
 
-import { useState } from "react:
-import { generateTheme } from "./utils/generateTheme"
-import { generateCSSVariables } from "./utils/generateCSSVariables"
+import { useState } from "react";
+import { generateTheme } from "./utils/generateTheme";
+import { generateCSSVariables } from "./utils/generateCSSVariables";
 
 function App() {
   const [css, setCss] = useState("")
