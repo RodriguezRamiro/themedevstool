@@ -9,20 +9,32 @@ import { applyThemeToDocument } from "./utils/applyTheme";
 
 import CSSOutput from "./components/cssOutput";
 import LayoutPreview from "./components/layoutPreview";
+import { generateExport } from "./utils/exportFormats";
 
 function App() {
   const [theme, setTheme] = useState(null);
   const [css, setCss] = useState("");
   const [mode, setMode] = useState("light");
+  const [format, setFormat] = useState("css");
 
-  function generateAndApply() {
+  function generateAndApply(selectedFormat = format) {
     const newTheme = generateTheme();
     setTheme(newTheme);
 
-    const cssOutput = generateCSSVariables(newTheme);
+    const cssOutput = generateCSSVariables(newTheme, selectedFormat);
     setCss(cssOutput);
 
     applyThemeToDocument(newTheme, mode);
+  }
+
+  function handleFormatChange(e) {
+    const newFormat = e.target.value;
+    setFormat(newFormat);
+
+    if (theme) {
+      const output = generateExport(theme, newFormat);
+      setCss(output);
+    }
   }
 
   function toggleTheme() {
@@ -56,6 +68,13 @@ function App() {
           <button onClick={toggleTheme}>
             {mode === "light" ? "Dark Mode" : "Light Mode"}
           </button>
+
+          <select value={format} onChange={handleFormatChange}>
+          <option value="css">CSS Variables</option>
+          <option value="json">JSON</option>
+          <option value="tailwind">Tailwind</option>
+          </select>
+
         </div>
       </header>
 
