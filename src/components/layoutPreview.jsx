@@ -1,48 +1,56 @@
 /* //themedevstool/src/components/layoutPreview.jsx */
 
-function LayoutPreview() {
+ffunction LayoutPreview() {
     return (
-        <div className="layout-preview">
+      <div className="layout-preview">
 
-            <nav className="navbar">
-                Theme Dev Tool
-            </nav>
+        <nav className="navbar">
+          <span>Theme Dev Tool</span>
+          <button className="cta small">Toggle Theme</button>
+        </nav>
 
-            <header className="hero">
-                <h1>Welcome</h1>
-                <p>THis is a theme page preview</p>
-            </header>
+        <header className="hero">
+          <h1>Build Faster UI</h1>
+          <p className="muted">
+            Preview your generated theme in a real layout
+          </p>
 
-            <section className="section">
+          <div className="hero-actions">
+            <button className="cta">Primary Action</button>
+            <button className="secondary">Secondary</button>
+          </div>
+        </header>
 
-                <h2>Cards</h2>
+        <section className="section">
+          <h2>Components</h2>
 
-                <div className="card-grid">
-                    <div className="card">
-                        Example Card
-                    </div>
+          <div className="card-grid">
+            <div className="card">
+              <h3>Card Title</h3>
+              <p className="muted">Supporting text for context</p>
+            </div>
 
-                    <div className="card">
-                        Example Card
-                    </div>
+            <div className="card">
+              <h3>Status</h3>
+              <p className="success">Success message</p>
+              <p className="warning">Warning message</p>
+              <p className="error">Error message</p>
+            </div>
 
-                    <div className="card">
-                        Example Card
-                    </div>
+            <div className="card">
+              <h3>Form</h3>
+              <input placeholder="Enter text..." />
+              <button className="cta">Submit</button>
+            </div>
+          </div>
+        </section>
 
-                </div>
+        <footer className="layout-footer">
+          <p className="muted">© 2026 Theme Dev Tool</p>
+        </footer>
 
-                <button className="cta">Primary Action</button>
-<a href="#">Example Link</a>
-<p className="muted">Secondary text example</p>
+      </div>
+    );
+  }
 
-            </section>
-
-            <footer className="layout-footer">
-            Footer Content
-            </footer>
-        </div>
-    )
-}
-
-export default LayoutPreview
+  export default LayoutPreview;
