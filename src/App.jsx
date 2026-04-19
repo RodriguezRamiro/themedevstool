@@ -1,74 +1,69 @@
+/* Desk/themedevstool/src/App.jsx */
+
 import { useState, useEffect } from "react";
 import "./App.css";
+
 import { generateTheme } from "./utils/generateTheme";
 import { generateCSSVariables } from "./utils/generateCSSVariables";
+import { applyThemeToDocument } from "./utils/applyTheme";
+
 import CSSOutput from "./components/cssOutput";
-import ThemePreview from "./components/themePreview";
 import LayoutPreview from "./components/layoutPreview";
 
 function App() {
-  const [css, setCss] = useState("");
   const [theme, setTheme] = useState(null);
-  const [pendingTheme, setPendingTheme] = useState(null);
+  const [css, setCss] = useState("");
   const [mode, setMode] = useState("light");
 
-function handleGenerate() {
-  const newTheme = generateTheme();
-  const cssOutput = generateCSSVariables(newTheme);
+  function generateAndApply() {
+    const newTheme = generateTheme();
+    setTheme(newTheme);
 
-  setPendingTheme(newTheme);
-  setCss(cssOutput);
-}
+    const cssOutput = generateCSSVariables(newTheme);
+    setCss(cssOutput);
 
-function handleApply() {
-  if (pendingTheme) {
-    setTheme(pendingTheme);
-    applyThemeToDocument(pendingTheme, mode);
+    applyThemeToDocument(newTheme, mode);
   }
-}
 
   function toggleTheme() {
     const newMode = mode === "light" ? "dark" : "light";
     setMode(newMode);
-    document.documentElement.setAttribute("data-theme", newMode);
+
+    if (theme) {
+      applyThemeToDocument(theme, newMode);
+    }
   }
+
   useEffect(() => {
-    handleGenerate();
+    generateAndApply();
   }, []);
 
   return (
     <div className="app">
 
-      <header className="app-header">
+      {/* HERO */}
+      <header className="hero-header">
+        <h1>Generate Beautiful UI Themes Instantly</h1>
+        <p>
+          Create, preview, and copy production-ready CSS variables in seconds.
+        </p>
 
-        <h1>Theme Dev Tool</h1>
-
-        <div className="controls">
-
-          <button onClick={handleGenerate}>
-            Generate Theme
-          </button>
-
-          <button onClick={handleApply}>Apply</button>
-
-          <button onClick={() => navigator.clipboard.writeText(css)}>
-            Copy CSS
+        <div className="hero-actions">
+          <button onClick={generateAndApply}>
+            Generate New Theme
           </button>
 
           <button onClick={toggleTheme}>
-  Toggle {mode === "light" ? "Dark" : "Light"}
-</button>
-      {theme && <ThemePreview theme={theme} />}
-
+            {mode === "light" ? "Dark Mode" : "Light Mode"}
+          </button>
         </div>
-
       </header>
 
+      {/* LIVE PREVIEW */}
       <LayoutPreview />
 
-      {css && (
-        <CSSOutput css={css} />
-      )}
+      {/* OUTPUT */}
+      {css && <CSSOutput css={css} />}
 
     </div>
   );
