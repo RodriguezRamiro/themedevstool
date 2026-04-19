@@ -18,20 +18,21 @@ function App() {
 
 
   function generateAndApply() {
-    const newTheme = generateTheme();
-
-    console.log(newTheme);
-
-    // store theme state
-    setTheme(newTheme);
-
-    // generate export
-    const output = generateExport(newTheme, format);
-    setCss(output);
-
-    // apply globally
-    applyThemeToDocument(newTheme, mode);
+    setTheme(generateTheme());
   }
+
+  useEffect(() => {
+    if (theme) {
+      const output = generateExport(theme, format);
+      setCss(output);
+      applyThemeToDocument(theme, mode);
+    }
+  }, [theme, mode, format]);
+
+  // 3. Initial trigger
+  useEffect(() => {
+    generateAndApply();
+  }, []);
 
   function handleFormatChange(e) {
     const newFormat = e.target.value;
