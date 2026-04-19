@@ -1,23 +1,36 @@
 /* //themedevstool/src/components/cssOutput.jsx */
 
+import { useState } from "react";
 
 function CSSOutput({ css }) {
-    function copyToClipboard() {
-        navigator.clipboard.writeText(css)
+  const [copied, setCopied] = useState(false);
+
+  async function copyToClipboard() {
+    try {
+      await navigator.clipboard.writeText(css);
+      setCopied(true);
+
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Copy failed", err);
     }
+  }
 
-    return (
-        <div className="css-output">
+  return (
+    <div className="css-output">
+      <div className="css-output-header">
+        <h2>CSS Variables</h2>
 
-            <h2>CSS Output</h2>
+        <button onClick={copyToClipboard}>
+          {copied ? "Copied ✓" : "Copy CSS"}
+        </button>
+      </div>
 
-            <button onClick={copyToClipboard}>
-                Copy
-            </button>
-
-            <pre>{css}</pre>
-        </div>
-    )
+      <pre className="css-code">
+        <code>{css}</code>
+      </pre>
+    </div>
+  );
 }
 
-export default CSSOutput
+export default CSSOutput;
