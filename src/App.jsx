@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import { generateTheme } from "./utils/generateTheme";
 import { generateCSSVariables } from "./utils/generateCSSVariables";
-import { applyThemeToDocument } from "./utils/applyTheme.js";
 import CSSOutput from "./components/cssOutput";
 import ThemePreview from "./components/themePreview";
 import LayoutPreview from "./components/layoutPreview";
