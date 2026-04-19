@@ -2,7 +2,13 @@
 
 import { useState } from "react";
 
-function CSSOutput({ css }) {
+const formatTitles = {
+  css: "CSS Variables",
+  json: "Theme JSON",
+  tailwind: "Tailwind Config",
+};
+
+function CSSOutput({ css, format = "css" }) {
   const [copied, setCopied] = useState(false);
 
   async function copyToClipboard() {
@@ -19,7 +25,7 @@ function CSSOutput({ css }) {
   return (
     <div className="css-output">
       <div className="css-output-header">
-        <h2>CSS Variables</h2>
+        <h2>{formatTitles[format] ?? "Export Output"}</h2>
 
         <button onClick={copyToClipboard}>
           {copied ? "Copied ✓" : "Copy CSS"}

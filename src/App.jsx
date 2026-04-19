@@ -1,10 +1,9 @@
 /* Desk/themedevstool/src/App.jsx */
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 import { generateTheme } from "./utils/generateTheme";
-import { generateCSSVariables } from "./utils/generateCSSVariables";
 import { applyThemeToDocument } from "./utils/applyTheme";
 
 import CSSOutput from "./components/cssOutput";
@@ -12,49 +11,28 @@ import LayoutPreview from "./components/layoutPreview";
 import { generateExport } from "./utils/exportFormats";
 
 function App() {
-  const [theme, setTheme] = useState(null);
-  const [css, setCss] = useState("");
+  const [theme, setTheme] = useState(() => generateTheme());
   const [mode, setMode] = useState("light");
   const [format, setFormat] = useState("css");
 
-  function generateAndApply(selectedFormat = format) {
-    const newTheme = generateTheme();
-    console.log(newTheme);
+  const css = generateExport(theme, format);
 
-    // set theme first
-    setTheme(newTheme);
-    console.log(newTheme);
-
-    // generate output based on format
-    const output = generateCSSVariables(newTheme, selectedFormat);
-    setCss(output);
-
-    // apply to DOM
-    applyThemeToDocument(newTheme, mode);
+  function generateAndApply() {
+    setTheme(generateTheme());
   }
 
   function handleFormatChange(e) {
-    const newFormat = e.target.value;
-    setFormat(newFormat);
-
-    if (theme) {
-      const output = generateExport(theme, newFormat);
-      setCss(output);
-    }
+    setFormat(e.target.value);
   }
 
   function toggleTheme() {
     const newMode = mode === "light" ? "dark" : "light";
     setMode(newMode);
-
-    if (theme) {
-      applyThemeToDocument(theme, newMode);
-    }
   }
 
   useEffect(() => {
-    generateAndApply();
-  }, []);
+    applyThemeToDocument(theme, mode);
+  }, [theme, mode]);
 
   return (
     <div className="app">
@@ -85,7 +63,7 @@ function App() {
       </header>
 
       {/* LIVE PRODUCT DEMO */}
-       <LayoutPreview />
+       <LayoutPreview mode={mode} onToggleTheme={toggleTheme} />
 
        {/* FEATURES (THIS WAS THE CONFUSION) */}
   <section className="features">
@@ -115,7 +93,7 @@ function App() {
   </section>
 
       {/* OUTPUT */}
-      {css && <CSSOutput css={css} />}
+      {css && <CSSOutput css={css} format={format} />}
 
       {/* REAL FOOTER (NOT THE PREVIEW ONE) */}
   <footer className="app-footer">
