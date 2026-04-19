@@ -1,6 +1,6 @@
 /* //themedevstool/src/components/layoutPreview.jsx */
 
-ffunction LayoutPreview() {
+function LayoutPreview() {
     return (
       <div className="layout-preview">
 
