@@ -12,9 +12,9 @@ export function generatePalette() {
     const hue = randomHue()
 
     return [
-        hsl(hue, 70, 50), // primary
-        hsl(hue + 30, 70, 50), // secondary
-        hsl(hue + 60, 70, 50), // accent
+        hsl(hue, 70, 50),     // primary
+        hsl(hue + 30, 65, 45), // secondary (slightly darker)
+        hsl(hue + 60, 80, 60), // accent (brighter)
     ]
 
 }
