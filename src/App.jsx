@@ -19,11 +19,17 @@ function App() {
 
   function generateAndApply(selectedFormat = format) {
     const newTheme = generateTheme();
+    console.log(newTheme);
+
+    // set theme first
     setTheme(newTheme);
+    console.log(newTheme);
 
-    const cssOutput = generateCSSVariables(newTheme, selectedFormat);
-    setCss(cssOutput);
+    // generate output based on format
+    const output = generateCSSVariables(newTheme, selectedFormat);
+    setCss(output);
 
+    // apply to DOM
     applyThemeToDocument(newTheme, mode);
   }
 
