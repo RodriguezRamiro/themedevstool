@@ -59,13 +59,46 @@ function App() {
         </div>
       </header>
 
-      {/* LIVE PREVIEW */}
-      <LayoutPreview />
+      {/* LIVE PRODUCT DEMO */}
+       <LayoutPreview />
+
+       {/* FEATURES (THIS WAS THE CONFUSION) */}
+  <section className="features">
+    <h2>Why developers use this</h2>
+
+    <div className="feature-grid">
+      <div className="feature">
+        <h3>🎨 Instant Themes</h3>
+        <p>Generate balanced color systems in one click.</p>
+      </div>
+
+      <div className="feature">
+        <h3>⚡ Live Preview</h3>
+        <p>See your UI before you commit to it.</p>
+      </div>
+
+      <div className="feature">
+        <h3>📦 Copy & Ship</h3>
+        <p>Production-ready CSS variables instantly.</p>
+      </div>
+
+      <div className="feature">
+        <h3>🌙 Dark Mode Ready</h3>
+        <p>Light and dark themes built in automatically.</p>
+      </div>
+    </div>
+  </section>
 
       {/* OUTPUT */}
       {css && <CSSOutput css={css} />}
 
+      {/* REAL FOOTER (NOT THE PREVIEW ONE) */}
+  <footer className="app-footer">
+    <p>Built for developers who move fast.</p>
+  </footer>
+
     </div>
+
   );
 }
 
