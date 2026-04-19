@@ -12,6 +12,6 @@ export function applyThemeToDocument(theme, mode = "light") {
 
     // Apply variables
     Object.entries(colors).forEach(([key, value]) => {
-      root.style.setProperty(`--color-${key}`, value);
+      root.style.setProperty(`--${key}`, value);
     });
   }
