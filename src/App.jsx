@@ -18,7 +18,9 @@ function App() {
 
 
   function generateAndApply() {
+    console.log(generateAndApply)
     setTheme(generateTheme());
+    console.log(setTheme)
   }
 
   useEffect(() => {
@@ -29,7 +31,7 @@ function App() {
     }
   }, [theme, mode, format]);
 
-  // 3. Initial trigger
+  // Run once on startup
   useEffect(() => {
     generateAndApply();
   }, []);
@@ -51,14 +53,10 @@ function App() {
     setMode(newMode);
   }
 
-  // Run once on startup
-  useEffect(() => {
-    generateAndApply();
-  }, []);
-
   useEffect(() => {
     if (theme) {
       applyThemeToDocument(theme, mode);
+      console.log(applyThemeToDocument)
     }
   }, [theme, mode]);
 
