@@ -16,49 +16,39 @@ function App() {
   const [mode, setMode] = useState("light");
   const [format, setFormat] = useState("css");
 
-
   function generateAndApply() {
-    console.log(generateAndApply)
-    setTheme(generateTheme());
-    console.log(setTheme)
-  }
+    const newTheme = generateTheme();
 
-  useEffect(() => {
-    if (theme) {
-      const output = generateExport(theme, format);
-      setCss(output);
-      applyThemeToDocument(theme, mode);
-    }
-  }, [theme, mode, format]);
+    console.log("Generated theme:", newTheme);
+
+    setTheme(newTheme);
+  }
 
   // Run once on startup
   useEffect(() => {
     generateAndApply();
   }, []);
 
-  function handleFormatChange(e) {
-    const newFormat = e.target.value;
-
-    setFormat(newFormat);
-
+  useEffect(() => {
     if (theme) {
-      const output = generateExport(theme, newFormat);
+      const output = generateExport(theme, format);
+
       setCss(output);
+
+      applyThemeToDocument(theme, mode);
     }
+  }, [theme, mode, format]);
+
+  function handleFormatChange(e) {
+    setFormat(e.target.value);
   }
 
   function toggleTheme() {
-    const newMode =
-      mode === "light" ? "dark" : "light";
-    setMode(newMode);
+    setMode(prev =>
+      prev === "light" ? "dark" : "light"
+    );
   }
 
-  useEffect(() => {
-    if (theme) {
-      applyThemeToDocument(theme, mode);
-      console.log(applyThemeToDocument)
-    }
-  }, [theme, mode]);
 
 
   return (
