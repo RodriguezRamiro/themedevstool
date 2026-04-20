@@ -16,10 +16,13 @@ export function applyThemeToDocument(theme, mode = "light") {
     const root = document.documentElement;
 
     // Set theme attribute on <html>
+    // Defer updates to next paint frame
+  requestAnimationFrame(() => {
     root.setAttribute("data-theme", mode);
 
     // Apply CSS variables globally
     Object.entries(colors).forEach(([key, value]) => {
       root.style.setProperty(`--color-${key}`, value);
     });
+  });
   }

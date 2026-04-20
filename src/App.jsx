@@ -29,7 +29,7 @@ function App() {
   useEffect(() => {
     if (!theme) return
     console.log("Applying theme mode:", mode);
-console.log("Theme object:", theme);
+    console.log("Theme object:", theme);
       const output = generateExport(theme, format);
 
       setCss(output);
