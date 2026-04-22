@@ -13,12 +13,18 @@ function CSSOutput({ css, format = "css" }) {
 
   async function copyToClipboard() {
     try {
+      if (!navigator.clipboard) {
+        throw new Error("Clipboard API not supported");
+      }
+
       await navigator.clipboard.writeText(css);
       setCopied(true);
 
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error("Copy failed", err);
+
+      alert("Copy failed — try manual selection.");
     }
   }
 

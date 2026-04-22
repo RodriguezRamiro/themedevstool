@@ -23,4 +23,4 @@ export function applyThemeToDocument(theme, mode = "light") {
     for (const key in colors) {
       style.setProperty(`--color-${key}`, colors[key]);
     }
-  }
+  
