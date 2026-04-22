@@ -30,17 +30,12 @@ function App() {
   useEffect(() => {
     if (!theme) return;
 
-    if (isApplyingRef.current) return;
-
-    isApplyingRef.current = true;
-
     console.log("Applying theme mode:", mode);
-    console.log("Theme object:", theme);
 
       applyThemeToDocument(theme, mode);
+
       console.count("applyThemeToDocument called");
 
-      isApplyingRef.current = false;
     }, [theme, mode]);
 
     // Generate export output
