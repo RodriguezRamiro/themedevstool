@@ -4,8 +4,8 @@ function randomHue() {
     return Math.floor(Math.random() * 360)
 }
 
-function hsl(h, s, l) {
-     return `hsl(${h}, ${s}, ${l}%)`
+function shiftHue(base, shift) {
+     return (base + shift) % 360;
 }
 
 export function generatePalette() {
@@ -13,8 +13,8 @@ export function generatePalette() {
 
     return [
         hsl(hue, 70, 50),     // primary
-        hsl(hue + 30, 65, 45), // secondary (slightly darker)
-        hsl(hue + 60, 80, 60), // accent (brighter)
-    ]
+        hsl(shiftHue(hue + 30), 65, 45), // secondary (slightly darker)
+        hsl(shiftHue(hue + 6), 80, 60), // accent (brighter)
+    ];
 
 }
