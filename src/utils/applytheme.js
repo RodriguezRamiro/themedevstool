@@ -6,21 +6,22 @@ export function applyThemeToDocument(theme, mode = "light") {
     return;
   }
 
-    const colors = theme[mode];
+  const colors = theme[mode];
 
-    if (!colors)
-      console.warn("Invalid mode:", mode);
-      return;
+  if (!colors) {
+    console.warn("Invalid mode:", mode);
+    return;
+  }
+
+  const root = document.documentElement;
+
+  // Set theme attribute
+  root.setAttribute("data-theme", mode);
+
+  // Batch updates to avoid layout thrash
+  const style = root.style;
+
+  for (const key in colors) {
+    style.setProperty(`--color-${key}`, colors[key]);
+  }
 }
-    const root = document.documentElement;
-
-    // Set theme attribute
-    root.setAttribute("data-theme", mode);
-
-    // Batch updates to avoid layout thrash
-    const style = root.style;
-
-    for (const key in colors) {
-      style.setProperty(`--color-${key}`, colors[key]);
-    }
-  
