@@ -1,6 +1,6 @@
 /* //themedevstool/src/App.jsx */
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
 
 import { generateTheme } from "./utils/generateTheme";
@@ -16,7 +16,8 @@ function App() {
   const [mode, setMode] = useState("light");
   const [format, setFormat] = useState("css");
 
-
+  const isApplyingRef = useRef(false);
+  
   function generateAndApply() {
     const newTheme = generateTheme();
 
@@ -27,12 +28,19 @@ function App() {
 
   //Apply theme
   useEffect(() => {
-    if (!theme) return
+    if (!theme) return;
+
+    if (isApplyingRef.current) return;
+
+    isApplyingRef.current = true;
 
     console.log("Applying theme mode:", mode);
     console.log("Theme object:", theme);
 
       applyThemeToDocument(theme, mode);
+      console.count("applyThemeToDocument called");
+
+      isApplyingRef.current = false;
     }, [theme, mode]);
 
     // Generate export output
