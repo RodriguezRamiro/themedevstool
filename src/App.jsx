@@ -17,7 +17,7 @@ function App() {
   const [format, setFormat] = useState("css");
 
   const isApplyingRef = useRef(false);
-  
+
   function generateAndApply() {
     const newTheme = generateTheme();
 
@@ -113,6 +113,7 @@ function App() {
       {/* LIVE PRODUCT DEMO */}
 
       <LayoutPreview
+        theme={theme}
         mode={mode}
         onToggleTheme={toggleTheme}
       />
