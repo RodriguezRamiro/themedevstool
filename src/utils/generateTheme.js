@@ -1,15 +1,10 @@
 /* //themedevstool/src/utils/generateTheme.js */
 
-
-import { generatePalette } from "./generatePalette";
-
 export function generateTheme() {
-  const palette = generatePalette();
-
   const base = {
-    primary: palette[0],
-    secondary: palette[1],
-    accent: palette[2],
+    primary: "red",
+    secondary: "blue",
+    accent: "lime",
   };
 
   return {

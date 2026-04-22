@@ -1,8 +1,5 @@
 /* //themedevstool/src/utils/exportFormats.js */
 
-// Reused CSS
-import { generateCSSVariables } from "./generateCSSVariables";
-
 // JSON export
 export function generateJSON(theme) {
   return JSON.stringify(theme, null, 2);

@@ -1,8 +1,5 @@
 /* //themedevstool/src/components/layoutPreview.jsx */
 
-import { useEffect, useRef } from "react";
-import { applyThemeToDocument } from "../utils/applyTheme";
-
 function LayoutPreview({ theme, mode, onToggleTheme }) {
   return (
     <div className="layout-preview">
