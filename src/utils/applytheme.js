@@ -1,28 +1,22 @@
 /* //themedevstool/src/utils/applyTheme.js */
 
 export function applyThemeToDocument(theme, mode = "light") {
-    if (!theme) {
+    if (!theme) return;
       console.warn("No theme provided");
-      return;
-    }
 
     const colors = theme[mode];
-
-    if (!colors) {
+    if (!colors) return;
       console.warn("Invalid mode:", mode);
-      return;
-    }
 
     const root = document.documentElement;
 
-    // Set theme attribute on <html>
-    // Defer updates to next paint frame
-  requestAnimationFrame(() => {
+    // Set theme attribute
     root.setAttribute("data-theme", mode);
 
-    // Apply CSS variables globally
-    Object.entries(colors).forEach(([key, value]) => {
-      root.style.setProperty(`--color-${key}`, value);
-    });
-  });
+    // Batch updates to avoid layout thrash
+    const style = root.style;
+
+    for (const key in colors) {
+      style.setProperty(`--color-${key}`, colors[key]);
+    }
   }
