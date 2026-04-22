@@ -1,6 +1,6 @@
 /* //themedevstool/src/App.jsx */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import "./App.css";
 
 import { generateTheme } from "./utils/generateTheme";
@@ -25,17 +25,25 @@ function App() {
     setTheme(newTheme);
   }
 
-
+  //Apply theme
   useEffect(() => {
     if (!theme) return
+
     console.log("Applying theme mode:", mode);
     console.log("Theme object:", theme);
+
+      applyThemeToDocument(theme, mode);
+    }, [theme, mode]);
+
+    // Generate export output
+    useEffect(() => {
+      if (!theme) return;
+
       const output = generateExport(theme, format);
 
       setCss(output);
 
-      applyThemeToDocument(theme, mode);
-    }, [theme, mode, format]);
+    }, [theme, format]);
 
   function handleFormatChange(e) {
     setFormat(e.target.value);
