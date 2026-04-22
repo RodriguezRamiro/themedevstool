@@ -196,7 +196,7 @@ input {
     text-align: center;
     padding: 1rem;
     color: var(--color-textMuted);
-    border-top: var(--color-border);
+    border-top: 1px solid var(--color-border);
     display: flex;
     justify-content: center;
   }
