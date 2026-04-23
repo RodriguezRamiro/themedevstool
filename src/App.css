@@ -1,22 +1,32 @@
 :root {
   /* Fallback defaults only */
 
-  --color-primary: #6366f1;
-  --color-secondary: #8b5cf6;
-  --color-accent: #22c55e;
+  --bg: #111;
+  --bg-secondary: #1a1a1a;
 
-  --color-background: #ffffff;
-  --color-surface: #f8fafc;
-  --color-surfaceAlt: #e5e7eb;
+  --surface: #222;
+  --surface-hover: #333;
 
-  --color-text: #111827;
-  --color-textMuted: #6b7280;
+  --text: #f5f5f5;
+  --text-muted: #999;
+  --text-light: #ccc;
+  --text-inverse: #111;
 
-  --color-border: #e5e7eb;
+  --accent: #7c3aed;
+  --accent-hover: #8b5cf6;
+  --accent-secondary: #06b6d4;
 
-  --color-success: #16a34a;
-  --color-warning: #f59e0b;
-  --color-error: #dc2626;
+  --border: #444;
+  --border-light: #666;
+
+  --success: #16a34a;
+  --warning: #f59e0b;
+  --error: #dc2626;
+
+  /* shadows */
+  --shadow-sm: 0 2px 5px rgba(0,0,0,0.2);
+  --shadow-md: 0 5px 15px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.4);
 
 }
 
@@ -24,8 +34,8 @@
 
 body {
   margin: 0;
-  background: var(--color-background);
-  color: var(--color-text);
+  background: var(--bg);
+  color: var(--text);
   font-family: system-ui, sans-serif;
   transition:
     background-color 0.3s ease,
@@ -34,10 +44,10 @@ body {
   }
 
   .navbar {
-    background: var(--color-surface);
-    color: var(--color-text);
+    background: var(--surface);
+    color: var(--text);
     padding: 1rem;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
   }
@@ -45,7 +55,7 @@ body {
   /* HERO */
 
   .hero {
-    background: var(--color-surface);
+    background: var(--surface);
     padding: 2rem;
   }
 
@@ -54,10 +64,10 @@ body {
     padding: 4rem 2rem;
     background: linear-gradient(
       135deg,
-      var(--color-primary),
-      var(--color-accent)
+      var(--accent),
+      var(--accent-secondary)
     );
-    color: var(--color-text);
+    color: var(--text);
   }
 
 
@@ -84,8 +94,8 @@ body {
   }
 
   .feature {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    background: var(--surface);
+    border: 1px solid var(--border);
     padding: 1.5rem;
     border-radius: 12px;
   }
@@ -94,14 +104,14 @@ body {
   .footer {
     text-align: center;
     padding: 2rem;
-    color: var(--color-textMuted);
+    color: var(--text-muted);
   }
 
   /* Subtle Depth */
   .card,
   .feature,
   .css-output {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-sm);
 }
 
 
@@ -116,45 +126,45 @@ body {
   }
 
   .card {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    background: var(--surface);
+    border: 1px solid var(--border);
     padding: 1rem;
     border-radius: 10px;
   }
 
   .cta {
-    background: var(--color-primary);
-    color: var(--color-text);
+    background: var(--bg);
+    color: var(--text);
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 6px;
   }
 
   a {
-    color: var(--color-primary);
+    color: var(--accent);
   }
 
   .secondary {
-    background: var(--color-surfaceAlt);
-    border: 1px solid var(--color-border);
+    background: var(--surface);
+    border: 1px solid var(--border);
     padding: 0.5rem 1rem;
   }
 
   .muted {
-  color: var(--color-textMuted);
+  color: var(--text-muted);
 }
 
 
 .success {
-    color: var(--color-success);
+    color: var(--success);
   }
 
   .warning {
-    color: var(--color-warning);
+    color: var(--warning);
   }
 
   .error {
-    color: var(--color-error);
+    color: var(--error);
   }
 
 
@@ -162,21 +172,21 @@ input {
     width: 100%;
     padding: 0.5rem;
     margin-bottom: 0.5rem;
-    background: var(--color-surfaceAlt);
-    border: 1px solid var(--color-border);
-    color: var(--color-text);
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+    color: var(--text);
   }
 
   .layout-preview {
-    background: var(--color-background);
-    color: var(--color-text);
+    background: var(--bg);
+    color: var(--text);
     min-height: 100vh;
   }
 
   .layout-footer {
-    background: var(--color-primary);
+    background: var(--bg);
 
-    color: var(--color-text);
+    color: var(--text);
 
     padding: 1rem;
 
@@ -187,34 +197,34 @@ input {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: var(--color-background);
-    color: var(--color-text);
+    background: var(--bg);
+    color: var(--text);
     font-family: system-ui, sans-serif;
   }
 
   .app-footer {
     text-align: center;
     padding: 1rem;
-    color: var(--color-textMuted);
-    border-top: 1px solid var(--color-border);
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
     display: flex;
     justify-content: center;
   }
 
   button {
-    background: var(--color-primary);
+    background: var(--accent);
     border: none;
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
-    color: var(--color-text);
+    color: var(--text);
     cursor: pointer;
     font-weight: 600;
   }
 
   button.secondary {
-    background: var(--color-surfaceAlt);
-    color: var(--color-text);
-    border: 1px solid var(--color-border);
+    background: var(--surface-hover);
+    color: var(--text);
+    border: 1px solid var(--border);
   }
 
 
@@ -245,14 +255,14 @@ input {
     font-size: 0.8rem;
     font-weight: 600;
 
-    color: var(--color-text);
+    color: var(--text);
 
     box-shadow: 0 2px 8px rgba(0,0,0,0.25);
   }
 
   .css-output {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 12px;
     padding: 1rem;
   }
@@ -266,8 +276,8 @@ input {
 
 
 .css-output button {
-    background: var(--color-primary);
-    color: var(--color-text);
+    background: var(--accent);
+    color: var(--text);
     border: none;
     padding: 0.4rem 0.8rem;
     border-radius: 6px;
@@ -277,16 +287,16 @@ input {
   select {
     padding: 0.4rem;
     border-radius: 6px;
-    border: 1px solid var(--color-border);
-    background: var(--color-surface);
-    color: var(--color-text);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
   }
 
 .css-code {
     max-height: 300px;
     overflow: auto;
     font-size: 0.85rem;
-    background: var(--color-surfaceAlt);
+    background: var(--accent-hover);
     padding: 0.75rem;
     border-radius: 8px;
   }
