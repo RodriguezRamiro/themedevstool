@@ -1,45 +1,43 @@
-/* //themedevstool/src/utils/generateTheme.js */
+/* themedevstool/src/utils/generateTheme.js */
+
+function randomHue() {
+  return Math.floor(Math.random() * 360);
+}
 
 export function generateTheme() {
-  const base = {
-    primary: "red",
-    secondary: "blue",
-    accent: "lime",
-  };
+  const hue = randomHue();
 
   return {
-    light: {
-      ...base,
+    '--bg': `hsl(${hue}, 30%, 10%)`,
+    '--bg-secondary': `hsl(${hue}, 25%, 16%)`,
 
-      background: "#ffffff",
-      surface: "#f8fafc",
-      surfaceAlt: "#e5e7eb",
+    '--surface': `hsl(${hue}, 20%, 22%)`,
+    '--surface-hover': `hsl(${hue}, 20%, 28%)`,
 
-      text: "#111827",
-      textMuted: "#6b7280",
+    '--text': `hsl(${hue}, 15%, 92%)`,
+    '--text-muted': `hsl(${hue}, 10%, 65%)`,
+    '--text-light': `hsl(${hue}, 12%, 78%)`,
+    '--text-inverse': `hsl(${hue}, 15%, 10%)`,
 
-      border: "#e5e7eb",
+    '--accent': `hsl(${(hue + 40) % 360}, 90%, 60%)`,
+    '--accent-hover': `hsl(${(hue + 40) % 360}, 90%, 70%)`,
+    '--accent-secondary': `hsl(${(hue + 80) % 360}, 80%, 55%)`,
 
-      success: "#16a34a",
-      warning: "#f59e0b",
-      error: "#dc2626",
-    },
+    '--border': `hsl(${hue}, 15%, 30%)`,
+    '--border-light': `hsl(${hue}, 15%, 40%)`,
 
-    dark: {
-      ...base,
+    '--success': `hsl(140, 70%, 45%)`,
+    '--warning': `hsl(40, 90%, 55%)`,
+    '--danger': `hsl(0, 80%, 55%)`,
+    '--info': `hsl(210, 90%, 60%)`,
 
-      background: "#0f172a",
-      surface: "#020617",
-      surfaceAlt: "#1e293b",
+    '--shadow-sm':
+      `0 2px 5px hsla(${hue}, 50%, 5%, 0.2)`,
 
-      text: "#f8fafc",
-      textMuted: "#94a3b8",
+    '--shadow-md':
+      `0 5px 15px hsla(${hue}, 50%, 5%, 0.35)`,
 
-      border: "#1e293b",
-
-      success: "#22c55e",
-      warning: "#fbbf24",
-      error: "#ef4444",
-    },
+    '--shadow-lg':
+      `0 10px 30px hsla(${hue}, 50%, 5%, 0.5)`,
   };
 }
