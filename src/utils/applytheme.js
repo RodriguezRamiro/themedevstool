@@ -8,6 +8,8 @@ export function applyThemeToDocument(theme, mode = "dark") {
 
   const root = document.documentElement;
 
+  root.setAttribute("data-theme", mode);
+
   Object.entries(theme[mode]).forEach(([key, value]) => {
     root.style.setProperty(key, value);
   });

@@ -3,11 +3,19 @@
 
 
 export function generateCSSVariables(theme) {
+
+  const createVars = (obj) =>
+    Object.entries(obj)
+      .map(([key, value]) => `  ${key}: ${value};`)
+      .join("\n");
+
   return `
 :root {
-${Object.entries(theme)
-  .map(([key, value]) => `  ${key}: ${value};`)
-  .join("\n")}
+${createVars(theme.light)}
+}
+
+[data-theme="dark"] {
+${createVars(theme.dark)}
 }
 `;
 }
