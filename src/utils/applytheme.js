@@ -1,47 +1,29 @@
-/* themedevstool/src/utils/generatePalette.js */
+/* //themedevstool/src/utils/applyTheme.js */
 
-function randomHue() {
-  return Math.floor(Math.random() * 360);
-}
+export function applyThemeToDocument(theme, mode = "light") {
+  if (!theme) {
+    console.warn("No theme provided");
+    return;
+  }
 
-export function generatePalette() {
-  const hue = randomHue();
+  const colors = theme[mode];
 
-  return {
-    /* backgrounds */
-    '--bg': `hsl(${hue}, 30%, 10%)`,
-    '--bg-secondary': `hsl(${hue}, 25%, 16%)`,
-    '--surface': `hsl(${hue}, 20%, 22%)`,
-    '--surface-hover': `hsl(${hue}, 20%, 28%)`,
+  if (!colors) {
+    console.warn("Invalid mode:", mode);
+    return;
+  }
 
-    /* text */
-    '--text': `hsl(${hue}, 15%, 92%)`,
-    '--text-muted': `hsl(${hue}, 10%, 65%)`,
-    '--text-light': `hsl(${hue}, 12%, 78%)`,
-    '--text-inverse': `hsl(${hue}, 15%, 10%)`,
+  const root = document.documentElement;
 
-    /* accents */
-    '--accent': `hsl(${(hue + 40) % 360}, 90%, 60%)`,
-    '--accent-hover': `hsl(${(hue + 40) % 360}, 90%, 70%)`,
-    '--accent-secondary': `hsl(${(hue + 80) % 360}, 80%, 55%)`,
+  // Set theme attribute
+  root.setAttribute("data-theme", mode);
 
-    /* borders */
-    '--border': `hsl(${hue}, 15%, 30%)`,
-    '--border-light': `hsl(${hue}, 15%, 40%)`,
+  // Batch updates to avoid layout thrash
+  const style = root.style;
 
-    /* states */
-    '--success': `hsl(140, 70%, 45%)`,
-    '--warning': `hsl(40, 90%, 55%)`,
-    '--danger': `hsl(0, 80%, 55%)`,
-    '--info': `hsl(210, 90%, 60%)`,
-
-    /* shadows */
-    '--shadow-sm': `0 2px 5px hsla(${hue}, 50%, 5%, 0.2)`,
-
-    '--shadow-md':
-      `0 5px 15px hsla(${hue}, 50%, 5%, 0.35)`,
-
-    '--shadow-lg':
-      `0 10px 30px hsla(${hue}, 50%, 5%, 0.5)`,
-  };
+  for (const key in colors) {
+    root.style.setProperty(
+      `--color-${key}`,
+      colors[key]);
+  }
 }
