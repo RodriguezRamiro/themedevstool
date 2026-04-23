@@ -32,7 +32,7 @@ export function generatePalette() {
     /* states */
     '--success': `hsl(140, 70%, 45%)`,
     '--warning': `hsl(40, 90%, 55%)`,
-    '--error': `hsl(0, 80%, 55%)`,
+    '--danger': `hsl(0, 80%, 55%)`,
     '--info': `hsl(210, 90%, 60%)`,
 
     /* shadows */

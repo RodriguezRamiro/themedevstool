@@ -44,20 +44,13 @@ function App() {
           Generate Theme
         </button>
 
-        <button onClick={toggleTheme}>
-          Toggle Mode
-        </button>
-
       </header>
 
       {theme && (
         <LayoutPreview
           theme={theme}
-          mode={mode}
-          onToggleTheme={toggleTheme}
         />
       )}
-
     </div>
   );
 }
