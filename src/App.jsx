@@ -16,14 +16,6 @@ function App() {
 
   }, []);
 
-  function generateAndApply() {
-    const newTheme = generateTheme();
-
-    console.log("Generated theme:", newTheme);
-
-    setTheme(newTheme);
-  }
-
   useEffect(() => {
     if (!theme) return;
 
@@ -33,7 +25,17 @@ function App() {
 
   }, [theme, mode]);
 
+  function generateAndApply() {
+    const newTheme = generateTheme();
+
+    console.log("Generated theme:", newTheme);
+
+    setTheme(newTheme);
+  }
+
+
   function toggleTheme() {
+
     setMode(prev =>
       prev === "light"
         ? "dark"
@@ -49,6 +51,7 @@ function App() {
         <button onClick={generateAndApply}>
           Generate Theme
         </button>
+
 
       </header>
 
