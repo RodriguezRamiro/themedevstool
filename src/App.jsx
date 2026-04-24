@@ -52,18 +52,13 @@ function App() {
           Generate Theme
         </button>
 
-        <button onClick={toggleTheme}>
-          Switch to {mode === "light" ? "Dark" : "Light"} Mode
-        </button>
-
-
-
       </header>
 
       {theme && (
         <LayoutPreview
-          theme={theme}
-        />
+        mode={mode}
+        onToggleTheme={toggleTheme}
+      />
 
 
       )}
