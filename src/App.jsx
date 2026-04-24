@@ -10,6 +10,12 @@ function App() {
   const [theme, setTheme] = useState(null);
   const [mode, setMode] = useState("light");
 
+  useEffect(() => {
+    const initialTheme = generateTheme();
+    setTheme(initialTheme);
+
+  }, []);
+
   function generateAndApply() {
     const newTheme = generateTheme();
 
