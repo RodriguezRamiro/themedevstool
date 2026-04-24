@@ -1,18 +1,14 @@
 /* //themedevstool/src/components/layoutPreview.jsx */
 
-function LayoutPreview({ theme, mode, onToggleTheme }) {
+
+
+function LayoutPreview({theme, mode, onToggleTheme }) {
   return (
     <div className="layout-preview">
       <nav className="navbar">
         <span>Theme Dev Tool</span>
 
-        <button
-          className="cta small"
-          onClick={onToggleTheme}
-          type="button"
-        >
-          {mode === "light" ? "Toggle Dark" : "Toggle Light"}
-        </button>
+        <button>unUsedBtn</button>
       </nav>
 
       <header className="hero">

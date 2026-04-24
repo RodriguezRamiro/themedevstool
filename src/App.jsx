@@ -52,6 +52,11 @@ function App() {
           Generate Theme
         </button>
 
+        <button onClick={toggleTheme}>
+          Switch to {mode === "light" ? "Dark" : "Light"} Mode
+        </button>
+
+
 
       </header>
 
@@ -59,6 +64,8 @@ function App() {
         <LayoutPreview
           theme={theme}
         />
+
+
       )}
     </div>
   );
