@@ -8,19 +8,31 @@ const formatTitles = {
   tailwind: "Tailwind Config",
 };
 
-function CSSOutput({ css, format = "css" }) {
+const copyLabels = {
+  css: "Copy CSS",
+  json: "Copy JSON",
+  tailwind: "Copy Tailwind",
+};
+
+function CSSOutput({ content, format = "css" }) {
+
   const [copied, setCopied] = useState(false);
 
   async function copyToClipboard() {
+
     try {
+
       if (!navigator.clipboard) {
         throw new Error("Clipboard API not supported");
       }
 
-      await navigator.clipboard.writeText(css);
+      await navigator.clipboard.writeText(content);
+
       setCopied(true);
 
-      setTimeout(() => setCopied(false), 2000);
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
     } catch (err) {
       console.error("Copy failed", err);
 
@@ -34,12 +46,14 @@ function CSSOutput({ css, format = "css" }) {
         <h2>{formatTitles[format] ?? "Export Output"}</h2>
 
         <button onClick={copyToClipboard}>
-          {copied ? "Copied ✓" : "Copy CSS"}
+          {copied
+          ? "Copied ✓"
+          : copyLabels[format] ?? "Copy"}
         </button>
       </div>
 
       <pre className="css-code">
-        <code>{css}</code>
+        <code>{content}</code>
       </pre>
     </div>
   );
