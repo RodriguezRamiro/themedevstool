@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 import { generateTheme } from "./utils/generateTheme";
-import { applyThemeToDocument } from "./utils/applyTheme";
+import { applyThemeToDocument } from "./utils/applyheme";
 import CSSOutput from "./components/CSSOutput";
 import { generateCSSVariables } from "./utils/generateCSSVariables";
 
