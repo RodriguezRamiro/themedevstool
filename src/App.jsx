@@ -3,12 +3,17 @@ import "./App.css";
 
 import { generateTheme } from "./utils/generateTheme";
 import { applyThemeToDocument } from "./utils/applyTheme";
+import CSSOutput from "./components/cssOutput";
+import { generateCSSVariables } from "./utils/generateCSSVariables";
 
 import LayoutPreview from "./components/layoutPreview";
 
 function App() {
   const [theme, setTheme] = useState(null);
   const [mode, setMode] = useState("light");
+  const exportedCSS = theme
+  ? generateCSSVariables(theme)
+  : "";
 
   useEffect(() => {
     const initialTheme = generateTheme();
@@ -55,11 +60,21 @@ function App() {
       </header>
 
       {theme && (
+        <>
+
         <LayoutPreview
         mode={mode}
         onToggleTheme={toggleTheme}
       />
 
+      <section className="section">
+
+        <CSSOutput
+        content={exportedCSS}
+        format="css"
+        />
+      </section>
+      </>
 
       )}
     </div>
