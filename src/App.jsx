@@ -3,10 +3,10 @@ import "./App.css";
 
 import { generateTheme } from "./utils/generateTheme";
 import { applyThemeToDocument } from "./utils/applyTheme";
-import CSSOutput from "./components/cssOutput";
+import CSSOutput from "./components/CSSOutput";
 import { generateCSSVariables } from "./utils/generateCSSVariables";
 
-import LayoutPreview from "./components/layoutPreview";
+import LayoutPreview from "./components/LayoutPreview";
 
 function App() {
   const [theme, setTheme] = useState(null);
