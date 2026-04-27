@@ -44,7 +44,7 @@ body {
   }
 
   .navbar {
-    background: var(--surface);
+    background: var(--accent-secondary);
     color: var(--text);
     padding: 1rem;
     border-bottom: 1px solid var(--border);
@@ -126,14 +126,14 @@ body {
   }
 
   .card {
-    background: var(--surface);
+    background: var(--bg);
     border: 1px solid var(--border);
     padding: 1rem;
     border-radius: 10px;
   }
 
   .cta {
-    background: var(--bg);
+    background: var(--accent);
     color: var(--text);
     border: none;
     padding: 0.5rem 1rem;
@@ -222,7 +222,7 @@ input {
   }
 
   button.secondary {
-    background: var(--surface-hover);
+    background: var(--accent-hover);
     color: var(--text);
     border: 1px solid var(--border);
   }
